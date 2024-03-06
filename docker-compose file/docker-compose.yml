@@ -1,0 +1,27 @@
+services:
+  arithmetic-service:
+    image: arithmetic-service
+    build: 
+      context: ../arithmetic-service
+      dockerfile: Dockerfile
+    container_name: arithmetic-service
+    ports:
+      - "4000:8000"
+    environment: 
+      - PORT=8000
+    restart: "no"
+
+  azure-storage:
+    image: azure-storage
+    build: 
+      context: ../azure-storage-service
+      dockerfile: Dockerfile
+    container_name: azure-storage
+    ports:
+      - "4001:8000"
+    environment: 
+      - PORT=8000
+      - STORAGE_ACCOUNT_NAME = practicums913
+      - STORAGE_ACCESS_KEY = 9xc77eiHn3LM4EYnAqukDYsxKT9DtPuE/Iir7U3wKlwQ9u0fKT5OCJRVWmIspzC4fShfyp05mKxc+AStjWf9tA==
+      
+    restart: "no"
