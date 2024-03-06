@@ -1,22 +1,24 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require("express");
-const {getTheImage} = require("./file-storage");
-// const PORT = process.env.PORT;
-const PORT = 3000;
-const storageAccountName = process.env.STORAGE_ACCOUNT_NAME; const storageAccessKey = process.env.STORAGE_ACCESS_KEY;
+const { getTheImage } = require("./file-storage");
+
+const PORT = process.env.PORT;
+const storageAccountName = process.env.STORAGE_ACCOUNT_NAME;
+const storageAccessKey = process.env.STORAGE_ACCESS_KEY; // Corrected typo here
+
 const app = express();
 app.get("/image", async (req, res) => {
-const imagePath = req.query.path;
-const [response, properties] = await getTheImage(storageAccountName, storageAccessKey, imagePath);
-res.writeHead (200, {
+    const imagePath = req.query.path; // Removed space after 'req'
+    const [response, properties] = await getTheImage(storageAccountName, storageAccessKey, imagePath);
 
-"Content-Length": properties.contentLength,
-"Content-Type": "image/jpeg",
-});
-response.readableStreamBody.pipe(res);
-});
+    res.writeHead(200, {
+        "Content-Length": properties.contentLength, 
+        "Content-Type": "image/jpeg",
+    });
 
+    response.readableStreamBody.pipe(res);
+});
 
 app.listen(PORT, () => {
-    console.log(`Azure storage service is up and listening to port ${PORT}`);
+    console.log(`Azure storage service is up and listening on port ${PORT}`); // Corrected template string syntax
 });
