@@ -21,7 +21,7 @@ services:
       - "4001:8000"
     environment: 
       - PORT=8000
-      - STORAGE_ACCOUNT_NAME = practicums913
-      - STORAGE_ACCESS_KEY = 9xc77eiHn3LM4EYnAqukDYsxKT9DtPuE/Iir7U3wKlwQ9u0fKT5OCJRVWmIspzC4fShfyp05mKxc+AStjWf9tA==
+      - STORAGE_ACCOUNT_NAME=practicums913
+      - STORAGE_ACCESS_KEY=9xc77eiHn3LM4EYnAqukDYsxKT9DtPuE/Iir7U3wKlwQ9u0fKT5OCJRVWmIspzC4fShfyp05mKxc+AStjWf9tA==
       
     restart: "no"
